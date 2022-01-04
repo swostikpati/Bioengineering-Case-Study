@@ -1,4 +1,4 @@
-%% Ans. 1 Reading Data from the file
+%%Reading Data from the file
 %Opening the header files
 fheader = fopen('a03.hea','r');
 test = fscanf(fheader, '%s',2); %To skip values
@@ -8,7 +8,7 @@ ECG = fread(fid, 'int16');
 %Extracting the sampling frequency
 samplingfreq = fscanf(fheader, '%f',1);
 
-%% Ans. 2 Extracting four hours of information and Interpolating
+%%Extracting four hours of information and Interpolating
 
 %Extracting 4 hours of data from the ECG data
 nECG = ECG(1:1440000);
@@ -38,7 +38,7 @@ ylabel('Signal Amplitude (in volts)');
 legend('Sampling Frequency - 100Hz','Sampling Frequency - 500HZ');
 hold off;
 
-%% Ans. 3 Filtering the data using a low-pass filter
+%%Filtering the data using a low-pass filter
 
 %Designing a low pass filter
 d = designfilt('lowpassfir', 'Filterorder', 20, 'CutoffFrequency', 11, 'SampleRate', N2);
@@ -55,7 +55,7 @@ ylabel('Signal Amplitude (in volts)');
 legend('Raw','Filtered');
 hold off;
 
-%% Ans. 4 and Ans.5 Time-Domain Analysis 
+%%Time-Domain Analysis 
 
 %Creating empty arrays
 avghr = [];
@@ -137,7 +137,7 @@ ylabel('Average Heart Rate (in BPM)');
 legend('Average Heart Rate','Presence of Apneas');
 hold off;
 
-%% Ans. 6 Downsampling and Frequency vs Power Spectrum
+%%Downsampling and Frequency vs Power Spectrum
 
 %Assigning new sampling frequency of 4Hz
 nfs = 4;
@@ -157,7 +157,7 @@ title('Test Case 4: Frequency vs Power Spectrum')
 xlabel('Frequency (in Hz)');
 ylabel('Power (in volts)');
 
-%% Ans. 7 Frequency-Domain Analysis 
+%%Frequency-Domain Analysis 
 PSDarr = []; 
 %Performing the analysis for every 60 seconds in the 4 hour period
 for i=1:240:57600
@@ -183,7 +183,7 @@ ylabel('Frequency (in Hz)');
 legend('Power Density Graph','Averge Heart Rate','Presence of Apneas');
 hold off;
 
-%% Ans. 8 Algorithm Design and Efficiency Calculation
+%%Algorithm Design and Efficiency Calculation
 
 check =[];
 threshold = 63; %threshold value for apnea detection based on observation
